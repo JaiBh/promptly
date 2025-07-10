@@ -5,12 +5,11 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { useTRPC } from "@/trpc/Client";
-import { useSuspenseQuery } from "@tanstack/react-query";
 import MessagesContainer from "../components/MessagesContainer";
 import { Suspense, useState } from "react";
 import { Fragment } from "@/generated/prisma";
 import ProjectHeader from "../components/ProjectHeader";
+import FragmentWeb from "../components/FragmentWeb";
 
 interface Props {
   projectId: string;
@@ -39,11 +38,11 @@ function ProjectView({ projectId }: Props) {
           </Suspense>
         </ResizablePanel>
         <ResizableHandle withHandle></ResizableHandle>
-        <ResizablePanel
-          defaultSize={65}
-          minSize={50}
-          className=""
-        ></ResizablePanel>
+        <ResizablePanel defaultSize={65} minSize={50} className="">
+          {!!activeFragment && (
+            <FragmentWeb data={activeFragment}></FragmentWeb>
+          )}{" "}
+        </ResizablePanel>
       </ResizablePanelGroup>
     </div>
   );
