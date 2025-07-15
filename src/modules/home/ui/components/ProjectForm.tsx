@@ -26,6 +26,7 @@ function ProjectForm() {
   const router = useRouter();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,6 +42,9 @@ function ProjectForm() {
         // TODO: invalidate usage status
       },
       onError: (error) => {
+        if (error?.data?.code === "UNAUTHORIZED") {
+          router.push("/sign-in");
+        }
         // TODO: redirect to pricing page if specific error
         toast.error(error.message);
       },
