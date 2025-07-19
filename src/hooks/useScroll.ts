@@ -8,7 +8,7 @@ export const useScroll = (threshold = 10) => {
       setIsScrolled(window.scrollY > threshold);
     };
     window.addEventListener("scroll", handleScroll);
-    handleScroll;
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [threshold]);

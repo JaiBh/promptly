@@ -5,7 +5,7 @@ import z from "zod";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Form, FormField } from "@/components/ui/form";
-import { ArrowUpIcon, Loader2Icon, Router } from "lucide-react";
+import { ArrowUpIcon, Loader2Icon } from "lucide-react";
 import { useTRPC } from "@/trpc/Client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
@@ -39,7 +39,7 @@ function MessageForm({ projectId }: Props) {
 
   const createMessage = useMutation(
     trpc.messages.create.mutationOptions({
-      onSuccess: (data) => {
+      onSuccess: () => {
         form.reset();
         queryClient.invalidateQueries(
           trpc.messages.getMany.queryOptions({ projectId })
