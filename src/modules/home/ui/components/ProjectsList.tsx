@@ -19,7 +19,7 @@ function ProjectsList() {
   return (
     <div className="p-8 border rounded-xl flex flex-col gap-y-6 w-full bg-white dark:bg-sidebar">
       <h2 className="text-2xl font-semibold">{user?.firstName}&apos;s Vibes</h2>
-      <div className="grid grid-cols 1 sml;grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sml:grid-cols-3 gap-6">
         {projects?.length === 0 && (
           <div className="col-span-full text-center">
             <p className="text-sm text-muted-foreground">No projects found</p>
