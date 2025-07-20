@@ -89,4 +89,39 @@ export const projectsRouter = createTRPCRouter({
       });
       return createdProject;
     }),
+  delete: protectedProcedure
+    .input(
+      z.object({
+        id: z.string().min(1, { message: "Id is required" }),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      try {
+        const project = await prisma.project.findUnique({
+          where: {
+            id: input.id,
+            userId: ctx.auth.userId,
+          },
+        });
+
+        if (!project) {
+          throw new TRPCError({
+            code: "UNPROCESSABLE_CONTENT",
+            message: "There are no projects that match this project Id",
+          });
+        }
+
+        await prisma.project.delete({
+          where: {
+            id: input.id,
+            userId: ctx.auth.userId,
+          },
+        });
+      } catch (err) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Something went wrong",
+        });
+      }
+    }),
 });

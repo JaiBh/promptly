@@ -104,8 +104,8 @@ function ProjectForm() {
               ></TextareaAutosize>
             )}
           />
-          <div className="flex gap-x-2 items-end justify-between pt-2">
-            <div className="text-[10px] text-muted-foreground font-mono">
+          <div className="flex gap-x-2 items-end justify-end pt-2">
+            <div className="text-[10px] text-muted-foreground font-mono max-lg:hidden">
               <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
                 <span>&#8984;</span>Enter
               </kbd>
@@ -113,8 +113,8 @@ function ProjectForm() {
             </div>
             <button
               className={cn(
-                "size-8 rounded-full flex items-center justify-center",
-                isButtonDisabled && "bg-muted-foreground border"
+                "size-8 rounded-full flex items-center justify-center bg-white border",
+                isButtonDisabled && "opacity-50"
               )}
               disabled={isButtonDisabled}
             >
@@ -144,6 +144,21 @@ function ProjectForm() {
           </div>
           <ScrollBar orientation="horizontal"></ScrollBar>
         </ScrollArea>
+        <div className="max-md:hidden md:flex-wrap md:justify-center gap-2 flex md:max-w-3xl">
+          {PROJECT_TEMPLATES.map((template) => {
+            return (
+              <Button
+                key={template.title}
+                variant={"outline"}
+                size={"sm"}
+                className="bg-white dark:bg-sidebar"
+                onClick={() => onSelect(template.prompt)}
+              >
+                {template.emoji} {template.title}
+              </Button>
+            );
+          })}
+        </div>
       </section>
     </Form>
   );
