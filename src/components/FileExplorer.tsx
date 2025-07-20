@@ -18,6 +18,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "./ui/breadcrumb";
+import { ScrollArea } from "./ui/scroll-area";
 
 type FileCollection = { [path: string]: string };
 
@@ -88,7 +89,6 @@ interface FileExplorerProps {
   files: FileCollection;
 }
 export const FileExplorer = ({ files }: FileExplorerProps) => {
-  const [copied, setCopied] = useState(false);
   const [selectedFile, setSelectedFile] = useState<string | null>(() => {
     const filesKeys = Object.keys(files);
     return filesKeys.length > 0 ? filesKeys[0] : null;
@@ -107,6 +107,70 @@ export const FileExplorer = ({ files }: FileExplorerProps) => {
     [files]
   );
 
+  return (
+    <div className="h-full">
+      {/* desktop */}
+      <ResizablePanelGroup direction="horizontal" className="max-lg:hidden!">
+        <ResizablePanel
+          defaultSize={30}
+          minSize={30}
+          className="bg-sidebar flex"
+        >
+          <div className="flex w-full">
+            <div className="w-full overflow-y-auto">
+              <TreeView
+                data={treeData}
+                value={selectedFile}
+                onSelect={handleFileSelect}
+              ></TreeView>
+            </div>
+          </div>
+        </ResizablePanel>
+        <ResizableHandle className="hover:bg-primary transition-colors"></ResizableHandle>
+        <ResizablePanel defaultSize={70} minSize={50}>
+          <SelectedFile
+            files={files}
+            selectedFile={selectedFile}
+          ></SelectedFile>
+        </ResizablePanel>
+      </ResizablePanelGroup>
+
+      {/* mobile/tablet */}
+      <ResizablePanelGroup direction="vertical" className="lg:hidden!">
+        <ResizablePanel
+          defaultSize={30}
+          minSize={30}
+          className="bg-sidebar flex"
+        >
+          <div className="flex w-full">
+            <div className="w-full overflow-y-auto">
+              <TreeView
+                data={treeData}
+                value={selectedFile}
+                onSelect={handleFileSelect}
+              ></TreeView>
+            </div>
+          </div>
+        </ResizablePanel>
+        <ResizableHandle className="hover:bg-primary transition-colors"></ResizableHandle>
+        <ResizablePanel defaultSize={70} minSize={50}>
+          <SelectedFile
+            files={files}
+            selectedFile={selectedFile}
+          ></SelectedFile>
+        </ResizablePanel>
+      </ResizablePanelGroup>
+    </div>
+  );
+};
+
+interface SelectedFileProps {
+  selectedFile: string | null;
+  files: FileCollection;
+}
+
+const SelectedFile = ({ selectedFile, files }: SelectedFileProps) => {
+  const [copied, setCopied] = useState(false);
   const handleCopy = useCallback(() => {
     if (selectedFile) {
       navigator.clipboard.writeText(files[selectedFile]);
@@ -118,50 +182,40 @@ export const FileExplorer = ({ files }: FileExplorerProps) => {
   }, [selectedFile, files]);
 
   return (
-    <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel defaultSize={30} minSize={30} className="bg-sidebar">
-        <TreeView
-          data={treeData}
-          value={selectedFile}
-          onSelect={handleFileSelect}
-        ></TreeView>
-      </ResizablePanel>
-      <ResizableHandle className="hover:bg-primary transition-colors"></ResizableHandle>
-      <ResizablePanel defaultSize={70} minSize={50}>
-        {selectedFile && files[selectedFile] ? (
-          <div className="h-full flex w-full flex-col">
-            <div className="border-b bg-sidebar px-4 py-2 flex justify-between items-center gap-x-2">
-              <FileBreadcrumb filePath={selectedFile}></FileBreadcrumb>
-              <Hint text="Copy to clipboard" side="bottom">
-                <Button
-                  variant={"outline"}
-                  size={"icon"}
-                  className="ml-auto"
-                  onClick={handleCopy}
-                  disabled={copied}
-                >
-                  {copied ? (
-                    <CopyCheckIcon></CopyCheckIcon>
-                  ) : (
-                    <CopyIcon></CopyIcon>
-                  )}
-                </Button>
-              </Hint>
-            </div>
+    <>
+      {selectedFile && files[selectedFile] ? (
+        <div className="h-full flex w-full flex-col">
+          <div className="border-b bg-sidebar px-4 py-2 flex justify-between items-center gap-x-2">
+            <FileBreadcrumb filePath={selectedFile}></FileBreadcrumb>
+            <Hint text="Copy to clipboard" side="bottom">
+              <Button
+                variant={"outline"}
+                size={"icon"}
+                className="ml-auto"
+                onClick={handleCopy}
+                disabled={copied}
+              >
+                {copied ? (
+                  <CopyCheckIcon></CopyCheckIcon>
+                ) : (
+                  <CopyIcon></CopyIcon>
+                )}
+              </Button>
+            </Hint>
+          </div>
 
-            <div className="flex-1 overflow-auto">
-              <CodeView
-                code={files[selectedFile]}
-                lang={getLanguageFromExtension(selectedFile)}
-              ></CodeView>
-            </div>
+          <div className="flex-1 overflow-auto">
+            <CodeView
+              code={files[selectedFile]}
+              lang={getLanguageFromExtension(selectedFile)}
+            ></CodeView>
           </div>
-        ) : (
-          <div className="flex h-full items-center justify-center text-muted">
-            Select a file to view it&apos;s content
-          </div>
-        )}
-      </ResizablePanel>
-    </ResizablePanelGroup>
+        </div>
+      ) : (
+        <div className="flex h-full items-center justify-center text-muted">
+          Select a file to view it&apos;s content
+        </div>
+      )}
+    </>
   );
 };

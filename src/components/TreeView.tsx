@@ -26,8 +26,8 @@ interface Props {
 
 function TreeView({ data, value, onSelect }: Props) {
   return (
-    <SidebarProvider>
-      <Sidebar collapsible="none" className="w-full">
+    <SidebarProvider className="min-h-0">
+      <Sidebar collapsible="none" className="w-full ">
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupContent>

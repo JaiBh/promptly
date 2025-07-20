@@ -27,7 +27,7 @@ function FragmentWeb({ data }: Props) {
   };
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="p-2 border-b bg-sidebar flex items-center gap-x-2">
+      <div className="p-2 border-b bg-sidebar grid grid-cols-[auto_1fr_auto] gap-x-2">
         <Hint text="Refresh" side="bottom" align="start">
           <Button variant={"outline"} size={"sm"} onClick={onRefresh}>
             <RefreshCcwIcon></RefreshCcwIcon>
@@ -38,7 +38,7 @@ function FragmentWeb({ data }: Props) {
             variant={"outline"}
             size={"sm"}
             onClick={handleCopy}
-            className="flex-1 justify-start text-start font-normal"
+            className="flex-1 justify-start text-start font-normal truncate"
             disabled={!data.sandboxUrl || copied}
           >
             <span className="truncate">{data.sandboxUrl}</span>

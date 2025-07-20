@@ -41,7 +41,7 @@ function Usage({ points, msBeforeNext }: Props) {
         {!hasProAccess && (
           <Button size={"sm"} variant={"tertiary"} asChild className="ml-auto">
             <Link href={"/pricing"}>
-              <CrownIcon></CrownIcon> Update
+              <CrownIcon></CrownIcon> Upgrade
             </Link>
           </Button>
         )}
