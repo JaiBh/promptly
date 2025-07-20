@@ -117,7 +117,7 @@ export const projectsRouter = createTRPCRouter({
             userId: ctx.auth.userId,
           },
         });
-      } catch (err) {
+      } catch {
         throw new TRPCError({
           code: "BAD_REQUEST",
           message: "Something went wrong",

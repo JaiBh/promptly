@@ -73,7 +73,7 @@ function ProjectHeader({ projectId }: Props) {
       await deleteProject.mutateAsync({
         id: projectId,
       });
-    } catch (err) {
+    } catch {
       toast.error("Something went wrong");
     }
   };
