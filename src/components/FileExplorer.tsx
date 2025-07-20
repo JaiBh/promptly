@@ -18,7 +18,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "./ui/breadcrumb";
-import { ScrollArea } from "./ui/scroll-area";
 
 type FileCollection = { [path: string]: string };
 
