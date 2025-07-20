@@ -40,13 +40,13 @@ function ProjectView({ projectId }: Props) {
 
       {/* mobile/tablet */}
       <ResizablePanelGroup direction="vertical" className="lg:hidden!">
-        <ResizablePanel defaultSize={55} minSize={30}>
+        <ResizablePanel defaultSize={55} minSize={15}>
           <ProjectPanel activeFragment={activeFragment}></ProjectPanel>
         </ResizablePanel>
         <ResizableHandle withHandle></ResizableHandle>
         <ResizablePanel
           defaultSize={45}
-          minSize={35}
+          minSize={15}
           className="flex flex-col min-h-0"
         >
           <MessagesPanel

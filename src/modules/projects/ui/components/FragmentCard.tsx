@@ -23,7 +23,7 @@ function FragmentCard({ fragment, onFragmentClick, isActiveFragment }: Props) {
         <span className="text-sm font-medium line-clamp-1">
           {fragment.title}
         </span>
-        <span className="text-sm">Preview</span>
+        <span className="text-sm max-lg:hidden">Preview</span>
       </div>
       <div className="flex items-center justify-center mt-0.5">
         <ChevronRight className="size-4"></ChevronRight>

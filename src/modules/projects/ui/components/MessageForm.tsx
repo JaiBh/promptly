@@ -91,12 +91,12 @@ function MessageForm({ projectId }: Props) {
               disabled={isPending}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
-              minRows={2}
+              minRows={1}
               maxRows={8}
-              className="pt-4 resize-none border-none w-full outline-none bg-transparent"
+              className="pt-4 resize-none border-none w-full outline-none bg-transparent max-lg:text-sm"
               placeholder="What would you like to build?"
               onKeyDown={(e) => {
-                if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+                if (e.key === "Enter") {
                   e.preventDefault();
                   form.handleSubmit(onSubmit)(e);
                 }
@@ -104,27 +104,19 @@ function MessageForm({ projectId }: Props) {
             ></TextareaAutosize>
           )}
         />
-        <div className="flex gap-x-2 items-end justify-between pt-2">
-          <div className="text-[10px] text-muted-foreground font-mono">
-            <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
-              <span>&#8984;</span>Enter
-            </kbd>
-            &nbsp; to submit
-          </div>
-          <button
-            className={cn(
-              "size-8 rounded-full flex items-center justify-center",
-              isButtonDisabled && "bg-muted-foreground border"
-            )}
-            disabled={isButtonDisabled}
-          >
-            {isPending ? (
-              <Loader2Icon className="size-4 animate-spin"></Loader2Icon>
-            ) : (
-              <ArrowUpIcon></ArrowUpIcon>
-            )}
-          </button>
-        </div>
+        <button
+          className={cn(
+            "absolute bottom-3 right-2 size-8 rounded-full flex items-center justify-center bg-white border",
+            isButtonDisabled && "opacity-50 cursor-not-allowed"
+          )}
+          disabled={isButtonDisabled}
+        >
+          {isPending ? (
+            <Loader2Icon className="size-4 animate-spin max-lg:size-3"></Loader2Icon>
+          ) : (
+            <ArrowUpIcon></ArrowUpIcon>
+          )}
+        </button>
       </form>
     </Form>
   );

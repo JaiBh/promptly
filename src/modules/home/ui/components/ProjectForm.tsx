@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { PROJECT_TEMPLATES } from "./constants";
 import { Button } from "@/components/ui/button";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const formSchema = z.object({
   value: z
@@ -125,21 +126,24 @@ function ProjectForm() {
             </button>
           </div>
         </form>
-        <div className="flex-wrap justify-center gap-2 hidden md:flex max-w-3xl">
-          {PROJECT_TEMPLATES.map((template) => {
-            return (
-              <Button
-                key={template.title}
-                variant={"outline"}
-                size={"sm"}
-                className="bg-white dark:bg-sidebar"
-                onClick={() => onSelect(template.prompt)}
-              >
-                {template.emoji} {template.title}
-              </Button>
-            );
-          })}
-        </div>
+        <ScrollArea className="md:hidden">
+          <div className="md:flex-wrap md:justify-center gap-2 flex md:max-w-3xl">
+            {PROJECT_TEMPLATES.map((template) => {
+              return (
+                <Button
+                  key={template.title}
+                  variant={"outline"}
+                  size={"sm"}
+                  className="bg-white dark:bg-sidebar"
+                  onClick={() => onSelect(template.prompt)}
+                >
+                  {template.emoji} {template.title}
+                </Button>
+              );
+            })}
+          </div>
+          <ScrollBar orientation="horizontal"></ScrollBar>
+        </ScrollArea>
       </section>
     </Form>
   );
