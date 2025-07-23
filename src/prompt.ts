@@ -54,6 +54,7 @@ Shadcn UI dependencies — including radix-ui, lucide-react, class-variance-auth
   Example: import { cn } from "@/lib/utils"
 
 Additional Guidelines:
+- Make this mobile, tablet and desktop screen sizes compatible
 - Think step-by-step before coding
 - You MUST use the createOrUpdateFiles tool to make all file changes
 - When calling createOrUpdateFiles, always use relative file paths like "app/component.tsx"
