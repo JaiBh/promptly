@@ -1,0 +1,33 @@
+import { galleryVibes } from "./data";
+import VibePreviewCard from "./VibePreviewCard";
+
+function GalleryPage() {
+  return (
+    <section className="py-12 w-[90%] max-w-7xl  mx-auto">
+      <div>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center">
+          Gallery
+        </h1>
+        <h3 className="mt-4 text-xl lg:text-2xl font-semibold max-w-2xl mx-auto text-center text-primary">
+          Explore a collection of AI-generated projects built with Vibe.
+        </h3>
+        <p className="mt-3 max-w-xl text-center mx-auto">
+          Each example was created from a simple text prompt, showing how Vibe
+          turns ideas into working Next.js sites with basic structure and
+          styling. Click to preview the results
+          <span className="md:hidden">.</span>
+          <span className="max-md:hidden">
+            {" "}
+            and see what’s possible with just a few words.
+          </span>
+        </p>
+      </div>
+      <ul className="mt-12 grid gap-y-8 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3">
+        {galleryVibes.map((vibe) => (
+          <VibePreviewCard data={vibe}></VibePreviewCard>
+        ))}
+      </ul>
+    </section>
+  );
+}
+export default GalleryPage;

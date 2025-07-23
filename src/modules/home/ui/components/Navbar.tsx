@@ -7,9 +7,11 @@ import { cn } from "@/lib/utils";
 import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function Navbar() {
   const isScrolled = useScroll();
+  const pathname = usePathname();
   return (
     <nav
       className={cn(
@@ -18,10 +20,30 @@ function Navbar() {
       )}
     >
       <div className="max-w-5xl mx-auto w-full flex justify-between items-center">
-        <Link href={"/"} className="flex items-center gap-2">
-          <Image src={"/logo.svg"} height={24} width={24} alt="Vibe"></Image>
-          <span className="font-semibold text-lg">Vibe</span>
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link href={"/"} className="flex items-center gap-2">
+            <Image src={"/logo.svg"} height={24} width={24} alt="Vibe"></Image>
+            <span className="font-semibold text-lg">Vibe</span>
+          </Link>
+          <Link
+            href={"/"}
+            className={cn(
+              "max-sm:hidden text-muted-foreground hover:text-primary font-semibold",
+              pathname === "/" && "text-primary"
+            )}
+          >
+            Home
+          </Link>
+          <Link
+            href={"/gallery"}
+            className={cn(
+              "text-muted-foreground hover:text-primary font-semibold",
+              pathname === "/gallery" && "text-primary"
+            )}
+          >
+            Gallery
+          </Link>
+        </div>
         <SignedOut>
           <div className="flex gap-2">
             <SignUpButton>
