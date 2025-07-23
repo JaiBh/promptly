@@ -24,7 +24,7 @@ function GalleryPage() {
       </div>
       <ul className="mt-12 grid gap-y-8 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3">
         {galleryVibes.map((vibe) => (
-          <VibePreviewCard data={vibe}></VibePreviewCard>
+          <VibePreviewCard key={vibe.url} data={vibe}></VibePreviewCard>
         ))}
       </ul>
     </section>
