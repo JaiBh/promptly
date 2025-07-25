@@ -1,4 +1,4 @@
-export const galleryVibes: { name: string; url: string }[] = [
+export const galleryProjects: { name: string; url: string }[] = [
   {
     name: "Netflix Clone",
     url: "https://netflix-clone-ai-lime.vercel.app/",

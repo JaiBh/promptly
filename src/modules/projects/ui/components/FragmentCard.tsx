@@ -13,8 +13,8 @@ function FragmentCard({ fragment, onFragmentClick, isActiveFragment }: Props) {
     <button
       className={cn(
         "flex items-start text-start gap-2 border rounded-lg bg-muted w-fit p-3 hover:bg-secondary transition-colors",
-        isActiveFragment &&
-          "bg-primary text-primary-foreground border-primary hover:bg-primary"
+        isActiveFragment && "bg-primary border-primary hover:bg-primary",
+        !isActiveFragment && "hover:text-secondary-foreground"
       )}
       onClick={() => onFragmentClick(fragment)}
     >
@@ -23,7 +23,7 @@ function FragmentCard({ fragment, onFragmentClick, isActiveFragment }: Props) {
         <span className="text-sm font-medium line-clamp-1">
           {fragment.title}
         </span>
-        <span className="text-sm max-lg:hidden">Preview</span>
+        <span className="text-sm max-lg:hidden ">Preview</span>
       </div>
       <div className="flex items-center justify-center mt-0.5">
         <ChevronRight className="size-4"></ChevronRight>

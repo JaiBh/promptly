@@ -113,8 +113,10 @@ function ProjectForm() {
             </div>
             <button
               className={cn(
-                "size-8 rounded-full flex items-center justify-center bg-white border",
-                isButtonDisabled && "opacity-50"
+                "size-8 rounded-full flex items-center justify-center bg-card border",
+                isButtonDisabled && "opacity-50 cursor-not-allowed",
+                !isButtonDisabled &&
+                  "hover:text-primary hover:border-primary transition"
               )}
               disabled={isButtonDisabled}
             >

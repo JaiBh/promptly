@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 import UserControl from "@/components/UserControl";
 import { useScroll } from "@/hooks/useScroll";
 import { cn } from "@/lib/utils";
@@ -22,8 +23,13 @@ function Navbar() {
       <div className="max-w-5xl mx-auto w-full flex justify-between items-center">
         <div className="flex items-center gap-6">
           <Link href={"/"} className="flex items-center gap-2">
-            <Image src={"/logo.svg"} height={24} width={24} alt="Vibe"></Image>
-            <span className="font-semibold text-lg">Vibe</span>
+            <Image
+              src={"/logo.svg"}
+              height={24}
+              width={24}
+              alt="Promotly"
+            ></Image>
+            <span className="font-semibold text-lg">Promptly</span>
           </Link>
           <Link
             href={"/"}
@@ -44,21 +50,24 @@ function Navbar() {
             Gallery
           </Link>
         </div>
-        <SignedOut>
-          <div className="flex gap-2">
-            <SignUpButton>
-              <Button variant={"outline"} size={"sm"}>
-                Sign Up
-              </Button>
-            </SignUpButton>
-            <SignInButton>
-              <Button size={"sm"}>Sign In</Button>
-            </SignInButton>
-          </div>
-        </SignedOut>
-        <SignedIn>
-          <UserControl showName></UserControl>
-        </SignedIn>
+        <div className="flex items-center gap-3">
+          <SignedOut>
+            <div className="flex gap-2">
+              <SignUpButton>
+                <Button variant={"outline"} size={"sm"}>
+                  Sign Up
+                </Button>
+              </SignUpButton>
+              <SignInButton>
+                <Button size={"sm"}>Sign In</Button>
+              </SignInButton>
+            </div>
+          </SignedOut>
+          <SignedIn>
+            <UserControl showName></UserControl>
+          </SignedIn>
+          <ModeToggle></ModeToggle>
+        </div>
       </div>
     </nav>
   );

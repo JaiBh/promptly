@@ -32,12 +32,12 @@ function AssistantMessage({
         {/* TODO: ADD LOGO */}
         <Image
           src={"/logo.svg"}
-          alt="Vibe"
+          alt="Promptly"
           height={18}
           width={18}
           className="shrink-0"
         ></Image>
-        <span className="text-sm font-medium">Vibe</span>
+        <span className="text-sm font-medium">Promptly</span>
         <span className="text-xs text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
           {format(createdAt, "HH:mm 'on' MMM dd, yyyy")}
         </span>

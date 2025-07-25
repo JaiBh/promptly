@@ -8,9 +8,7 @@ function VibePreviewCard({ data }: Props) {
   return (
     <li className="space-y-4 ">
       <div className=" px-3 flex items-enter justify-between">
-        <h3 className="text-xl font-semibold text-secondary-foreground">
-          {data.name}
-        </h3>
+        <h3 className="text-xl font-semibold">{data.name}</h3>
         <Link
           href={data.url}
           className="text-muted-foreground hover:text-primary"

@@ -1,4 +1,4 @@
-import { galleryVibes } from "./data";
+import { galleryProjects } from "./data";
 import VibePreviewCard from "./VibePreviewCard";
 
 function GalleryPage() {
@@ -9,12 +9,12 @@ function GalleryPage() {
           Gallery
         </h1>
         <h3 className="mt-4 text-xl lg:text-2xl font-semibold max-w-2xl mx-auto text-center text-primary">
-          Explore a collection of AI-generated projects built with Vibe.
+          Explore a collection of AI-generated projects built with Promptly.
         </h3>
         <p className="mt-3 max-w-xl text-center mx-auto">
-          Each example was created from a simple text prompt, showing how Vibe
-          turns ideas into working Next.js sites with basic structure and
-          styling. Click to preview the results
+          Each example was created from a simple text prompt, showing how
+          Promptly turns ideas into working Next.js sites with basic structure
+          and styling. Click to preview the results
           <span className="md:hidden">.</span>
           <span className="max-md:hidden">
             {" "}
@@ -23,8 +23,8 @@ function GalleryPage() {
         </p>
       </div>
       <ul className="mt-12 grid gap-y-8 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3">
-        {galleryVibes.map((vibe) => (
-          <VibePreviewCard key={vibe.url} data={vibe}></VibePreviewCard>
+        {galleryProjects.map((project) => (
+          <VibePreviewCard key={project.url} data={project}></VibePreviewCard>
         ))}
       </ul>
     </section>
