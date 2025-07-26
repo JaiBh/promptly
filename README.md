@@ -5,7 +5,7 @@ Promptly is an AI-powered web app that lets you generate simple websites from na
 > 🔗 **Live Demo**: [jaibh-promptly.vercel.app](https://jaibh-promptly.vercel.app/)  
 > 🧠 **GitHub Repo**: [github.com/JaiBh/promptly](https://github.com/JaiBh/promptly)
 
-# Project origins:
+### Project origins:
 
 Promptly is based on this [tutorial by Coding with Antonio](https://www.youtube.com/watch?v=xs8mWnbMcmc), which covers building an AI-powered site generator in Next.js.
 
