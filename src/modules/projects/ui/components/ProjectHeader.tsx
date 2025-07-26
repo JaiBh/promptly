@@ -86,7 +86,7 @@ function ProjectHeader({ projectId }: Props) {
           <DropdownMenuTrigger asChild>
             <Button variant={"ghost"} size={"sm"} className="pl-2!">
               <Image
-                src={"/logo.svg"}
+                src={"/logo.png"}
                 alt="Promptly"
                 height={18}
                 width={18}

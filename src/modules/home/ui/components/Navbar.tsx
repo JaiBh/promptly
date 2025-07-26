@@ -24,7 +24,7 @@ function Navbar() {
         <div className="flex items-center gap-6">
           <Link href={"/"} className="flex items-center gap-2">
             <Image
-              src={"/logo.svg"}
+              src={"/logo.png"}
               height={24}
               width={24}
               alt="Promotly"

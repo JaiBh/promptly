@@ -8,7 +8,7 @@ function HomePage() {
       <section className="space-y-6 py-[16vh] 2xl:py-48">
         <div className="flex flex-col items-center">
           <Image
-            src={"/logo.svg"}
+            src={"/logo.png"}
             alt="Promptly"
             width={50}
             height={50}

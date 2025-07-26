@@ -37,7 +37,7 @@ function MessageLoading() {
     <div className="flex flex-col group px-2 pb-4">
       <div className="flex items-center gap-2 pl-2 mb-2">
         <Image
-          src={"/logo.svg"}
+          src={"/logo.png"}
           alt="Promptly"
           height={18}
           width={18}
