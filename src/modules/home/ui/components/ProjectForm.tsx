@@ -128,7 +128,7 @@ function ProjectForm() {
             </button>
           </div>
         </form>
-        <ScrollArea className="md:hidden">
+        <ScrollArea className="md:hidden pb-2">
           <div className="md:flex-wrap md:justify-center gap-2 flex md:max-w-3xl">
             {PROJECT_TEMPLATES.map((template) => {
               return (

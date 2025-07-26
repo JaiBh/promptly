@@ -37,12 +37,30 @@ function ProjectPanel({ activeFragment }: Props) {
         </TabsList>
 
         <div className="ml-auto flex items-center gap-x-2">
-          {!hasProAccess && (
-            <Button asChild size="sm" variant={"tertiary"}>
-              <Link href={"/pricing"}>
-                <CrownIcon></CrownIcon> Upgrade
-              </Link>
-            </Button>
+          {!!hasProAccess && (
+            <>
+              <Button
+                asChild
+                size="icon"
+                variant={"tertiary"}
+                className="sm:hidden"
+              >
+                <Link href={"/pricing"}>
+                  <CrownIcon></CrownIcon>
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                size="sm"
+                variant={"tertiary"}
+                className="max-sm:hidden"
+              >
+                <Link href={"/pricing"}>
+                  <CrownIcon></CrownIcon> Upgrade
+                </Link>
+              </Button>
+            </>
           )}
           <UserControl></UserControl>
         </div>

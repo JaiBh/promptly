@@ -9,6 +9,7 @@ import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import NavSheet from "./NavSheet";
 
 function Navbar() {
   const isScrolled = useScroll();
@@ -34,7 +35,7 @@ function Navbar() {
           <Link
             href={"/"}
             className={cn(
-              "max-sm:hidden text-muted-foreground hover:text-primary font-semibold",
+              "max-md:hidden text-muted-foreground hover:text-primary font-semibold",
               pathname === "/" && "text-primary"
             )}
           >
@@ -43,14 +44,14 @@ function Navbar() {
           <Link
             href={"/gallery"}
             className={cn(
-              "text-muted-foreground hover:text-primary font-semibold",
+              "max-md:hidden text-muted-foreground hover:text-primary font-semibold",
               pathname === "/gallery" && "text-primary"
             )}
           >
             Gallery
           </Link>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="max-md:hidden flex items-center gap-3">
           <SignedOut>
             <div className="flex gap-2">
               <SignUpButton>
@@ -67,6 +68,9 @@ function Navbar() {
             <UserControl showName></UserControl>
           </SignedIn>
           <ModeToggle></ModeToggle>
+        </div>
+        <div className="md:hidden">
+          <NavSheet></NavSheet>
         </div>
       </div>
     </nav>

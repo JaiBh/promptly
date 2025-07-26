@@ -20,7 +20,7 @@ function ProjectView({ projectId }: Props) {
   return (
     <div className="h-screen">
       {/* desktop */}
-      <ResizablePanelGroup direction="horizontal" className="hidden! lg:flex!">
+      <ResizablePanelGroup direction="horizontal" className="max-md:hidden!">
         <ResizablePanel
           defaultSize={35}
           minSize={20}
@@ -39,7 +39,7 @@ function ProjectView({ projectId }: Props) {
       </ResizablePanelGroup>
 
       {/* mobile/tablet */}
-      <ResizablePanelGroup direction="vertical" className="lg:hidden!">
+      <ResizablePanelGroup direction="vertical" className="md:hidden!">
         <ResizablePanel defaultSize={55} minSize={15}>
           <ProjectPanel activeFragment={activeFragment}></ProjectPanel>
         </ResizablePanel>
