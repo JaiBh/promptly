@@ -11,9 +11,9 @@ Promptly is based on this [tutorial by Coding with Antonio](https://www.youtube.
 
 My contributions include:
 
-– Adding a gallery page to showcase generated sites
-– Making the UI fully responsive for mobile and tablet
-– Implementing the ability to delete AI-generated projects
+- Adding a gallery page to showcase generated sites
+- Making the UI fully responsive for mobile and tablet
+- Implementing the ability to delete AI-generated projects
 
 ---
 
